@@ -8,12 +8,15 @@
     body {
         font-family: 'Alegreya';
         font-size: 16px;
+        background-color: #000000;
+        color: #FFFFFF;
     }
     </style>
 </head>
 
 <body>
-   <a href="newemp.html">+New Emp</a>
+    <h1>New Emp [<a href="newemp.html">+</a>]</h1>
+   
     <?php
     // connect database 
     $db_host = "localhost";
@@ -35,7 +38,7 @@
     $limit = ($_GET['limit']<>"")? $_GET['limit'] : 10;
     $sql = "SELECT *
             FROM emp
-            ORDER BY 1 DESC
+            ORDER BY 1
             LIMIT 0, $limit";
     $result = $mysqli->query($sql);
 
@@ -51,12 +54,13 @@
         while($row = $result->fetch_object()){ 
             $html.= "<tr>";
             $html.= "<td>$row->empno</td>";
-            $html.= "<td>$row->name</td>";
-            $html.= "<td>$row->email</td>";
+            $html.= "<td>$row->emp_name</td>";
+            $html.= "<td>$row->emp_email</td>";
             $html.= "</tr>";
             }
             $html.= "</table>";
             echo $html;
     }
     ?>
-    <hr />
+</body>
+</html>
