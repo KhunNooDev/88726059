@@ -58,16 +58,17 @@
                     <th>Delete</th>
                 </tr>";
         while($row = $result->fetch_object()){ 
+            $gender = $row->emp_gender=="M"?"ชาย":"หญิง";
             $html.= "<tr>
                         <td>$row->empno</td>
                         <td>$row->emp_prefix</td>
                         <td>$row->emp_name</td>
-                        <td>$row->emp_gender</td>
+                        <td>$gender</td>
                         <td>$row->emp_birthdate</td>
                         <td>$row->emp_email</td>
                         <td>$row->emp_salary</td>
                         <td>[<a href='edit.php?empno=$row->empno'>Edit</a>]</td>
-                        <td><center>[<a href='delete.php?empno=$row->empno'>X</a>]</td>
+                        <td><center>[<a href='delete.php?empno=$row->empno'>X</a>]</center></td>
                     </tr>";
             }
             $html.= "</table>";
